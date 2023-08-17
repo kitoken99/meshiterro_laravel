@@ -12,5 +12,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/register', [\App\Http\Controllers\RegisterController::class, 'create'])
+    ->middleware("guest")
+    ->name('register');
+
+Route::post('/register', [\App\Http\Controllers\RegisterController::class,'store'])
+    ->middleware("guest");
 
 Route::get('/', [\App\Http\Controllers\HomesController::class, 'top']);
