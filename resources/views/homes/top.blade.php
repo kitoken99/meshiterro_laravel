@@ -1,1 +1,7 @@
-<h1>hello world</h1>
+@extends('layout.common')
+
+@section('title', 'トップページ')
+@include('layout.header')
+@section('content')
+    <p>このページはインデックスページです。</p>
+@endsection
