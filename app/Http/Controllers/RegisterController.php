@@ -19,11 +19,12 @@ class RegisterController extends Controller
       "email" => "required|string|email|max:255|unique:users",
       "password" => "required|string|confirmed|min:6|max:255",
     ]);
+    
     User::create([
       "name" => $request->name,
       "email" => $request->email,
       "password" => Hash::make($request->password)
     ]);
-    return redirect("/");
+    return redirect("/about");
   }
 }

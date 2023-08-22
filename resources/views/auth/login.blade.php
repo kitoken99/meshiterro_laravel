@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <mata charset="UTF-8">
-    <title>ログインフォーム</title>
-  </head>
-  <body>
+@extends('layout.common')
+
+@section('title', 'ログイン')
+@include('layout.header')
+@section('content')
     <h2>Log in</h2>
     <form name="loginform" action="/users/sign_in" method="post">
       {{ csrf_field() }}
@@ -15,7 +13,7 @@
       <input type='password' name="password" id="password"><br>
 
 
-      <button type="submit" name="action" value="send">Sign in</button>
+      <button type="submit" name="action" value="send">Log in</button>
     </form>
-  </body>
-</html>
+    <a href="users/sign_up">Sign up</a>
+@endsection

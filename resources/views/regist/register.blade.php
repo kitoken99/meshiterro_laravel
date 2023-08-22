@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <title>ユーザー登録フォーム</title>
-</head>
-<body>
+@extends('layout.common')
+
+@section('title', '新規登録')
+@include('layout.header')
+@section('content')
   <h2>Sign up</h2>
-  <form name="registform" action="sign_in" method="post" id="registform">
+  <form name="registform" action="sign_up" method="post" id="registform">
     {{ csrf_field() }}
       <label for="name">Name</label><br>
       <input type="text" name="name" id="name">
@@ -27,5 +25,5 @@
 
     <button type="submit" name="action" value="send">Sign up</button>
   </form>
-</body>
-</html>
+  <a href="/users/sign_in">Log in</a>
+@endsection
