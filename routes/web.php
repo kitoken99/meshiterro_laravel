@@ -33,7 +33,9 @@ Route::get('users/sign_out', [\App\Http\Controllers\LoginController::class, 'log
 Route::get('post_images', [\App\Http\Controllers\PostImagesController::class, 'index']);
 Route::get('post_image/new', [\App\Http\Controllers\PostImagesController::class, 'new'])
     ->middleware('auth');
-Route::get('post_image', [\App\Http\Controllers\PostImagesController::class, 'show']);
+Route::get('post_image/{id}', [\App\Http\Controllers\PostImagesController::class, 'show']);
 Route::post('post_image/store', [\App\Http\Controllers\PostImagesController::class, 'store']);
+Route::post('post_image/{id}', [\App\Http\Controllers\PostImagesController::class, 'destroy']);
+
 Route::get('/', [\App\Http\Controllers\HomesController::class, 'top']);
 Route::get('/about', [\App\Http\Controllers\HomesController::class, 'about']);

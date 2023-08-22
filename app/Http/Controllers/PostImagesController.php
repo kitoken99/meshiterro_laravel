@@ -18,8 +18,9 @@ class PostImagesController extends Controller
       return view('post_images.new');
     }
 
-    public function show(){
-      return view('post_images.show');
+    public function show($id){
+      $post_image = PostImage::find($id);
+      return view('post_images.show', ['post_image' => $post_image]);
     }
 
     public function store(Request $request){
@@ -37,6 +38,12 @@ class PostImagesController extends Controller
       ]);
       return redirect('post_images');
     }
+
+    public function destroy($id){
+      PostImage::find($id)->delete();
+      return redirect('post_images');
+    }
+
 
     protected function post_image(array $data){
       return Validator::make($data, [
