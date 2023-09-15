@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\PostImage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\PostComment;
 
 class PostImagesController extends Controller
 {
-    public function index(){
-      $post_images = PostImage::all();
-      return view('post_images.index', ['post_images' => $post_images]);
+    public function index(Request $request){
+      $keyword = $request->input('keyword');
+      $query = PostImage::query();
+      if(!empty($keyword)) {
+        $query->where('shop_name', 'LIKE', "%{$keyword}%")
+            ->orWhere('caption', 'LIKE', "%{$keyword}%");
+      }
+      $post_images = $query->get();
+      return view('post_images.index', ['keyword' => $keyword, 'post_images' => $post_images]);
     }
 
     public function new(){
@@ -20,7 +27,8 @@ class PostImagesController extends Controller
 
     public function show($id){
       $post_image = PostImage::find($id);
-      return view('post_images.show', ['post_image' => $post_image]);
+      $post_comment = PostComment::wherepost_image_id($id)->get();
+      return view('post_images.show', ['post_image' => $post_image, 'post_comment' => $post_comment]);
     }
 
     public function store(Request $request){

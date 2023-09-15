@@ -44,7 +44,21 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function get_image(){
+      if(!$this->image){
+        return 'no_image.jpg';
+      }else{
+        return $this->image;
+      }
+    }
+    public function PostComments(){
+      return $this->hasMany('App\Models\PostComment');
+    }
     public function post_images(){
       return $this->hasMany('App\Models\PostImage');
     }
+    public function Favorites(){
+      return $this->hasMany('App\Models\Favorite');
+    }
+
 }

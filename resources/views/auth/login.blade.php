@@ -1,7 +1,6 @@
 @extends('layout.common')
 
 @section('title', 'ログイン')
-@include('layout.header')
 @section('content')
     <h2>Log in</h2>
     <form name="loginform" action="/users/sign_in" method="post">

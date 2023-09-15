@@ -1,7 +1,6 @@
 @extends('layout.common')
 
 @section('title', 'new')
-@include('layout.header')
 @section('content')
 <h1>画像投稿フォーム</h1>
   <form action="/post_image/store" method="POST"  enctype="multipart/form-data">

@@ -1,7 +1,6 @@
 @extends('layout.common')
 
 @section('title', '新規登録')
-@include('layout.header')
 @section('content')
   <h2>Sign up</h2>
   <form name="registform" action="sign_up" method="post" id="registform">
